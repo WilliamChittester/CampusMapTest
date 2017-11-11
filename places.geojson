@@ -865,8 +865,11 @@
         ]
       },
       "properties": {
-        "name": "Mushroom Test Demonstration Facility",
-        "number": "13700"
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "name": "Water Treatment Facility #2",
+        "number": 918001
       }
     },
     {
@@ -6586,20 +6589,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -77.862737,
-          40.800698
-        ]
-      },
-      "properties": {
-        "name": "Fenske Lab",
-        "number": "405000"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -77.863648,
           40.80102
         ]
@@ -9297,6 +9286,40 @@
         "coordinates": [
           -77.86653399467468,
           40.80186365599942
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "name": "Earle Hall",
+        "number": 261000
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.86351382732391,
+          40.80681755428126
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "name": "Data Center",
+        "number": "043000"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.870734333992,
+          40.81261152182666
         ]
       }
     }
