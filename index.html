@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset='utf-8' />
+
+   <title>Penn State Map</title>
+
+   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
+   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.2/mapbox-gl.js'></script>
+   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.2/mapbox-gl.css' rel='stylesheet' />
+
+   <script src='./jquery-2.1.4.min.js'></script>
+
+   <link href='./bootstrap.min.css' rel='stylesheet' />
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+   <link href="./jquery-ui.min.css" rel="stylesheet" />
+   <script src="./jquery-ui.min.js"></script>
+
+   <style>
+       body { margin:0; padding:0; }
+       #map { position:absolute; top:0; bottom:0; width:100%; }
+
+       .navbar-header { padding-top: 1em; }
+       img {
+         margin: 0;
+         height:auto;
+         max-height: 3em;
+       }
+       #search {
+         margin-bottom: 0;
+         margin-top: 0;
+         padding: 0;
+         padding-bottom: 1em;
+       }
+       .options {
+         padding-top: 0;
+       }
+       .navbar-toggle {
+         margin-top: 0;
+       }
+       #clear {
+         width: auto;
+         max-width: 1.2em;
+         opacity: 0;
+         float: left;
+         margin-top: 1em;
+         margin-right: 0.6em;
+         pointer-events: none;
+       }
+       #clear:hover {
+         opacity: 1;
+         cursor: pointer;
+       }
+       #searchField {
+           width: 18em;
+           float: left;
+           padding-top: 0.5em;
+           padding-bottom: 1em;
+       }
+       input {
+         display: inline;
+         max-width: 13em;
+       }
+       .ui-menu {
+         background: white;
+         max-height: 30em;
+         overflow-y: scroll;
+         box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+       }
+       .ui-menu-item {
+         padding: 15px;
+         background-color: #fff;
+         border-bottom: 1px solid #dddddd;
+         margin-bottom: -1px;
+       }
+       .ui-state-focus {
+         background-color: #2196f3;
+         color: #fff;
+       }
+
+       .not-active {
+         opacity: 0.8;
+         pointer-events: none;
+         cursor: default;
+       }
+   </style>
+
+</head>
+<body>
+
+  <div id='map'></div>
+
+  <div class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <img class="image-responsive navbar-left" src='./psu.png' /><a class="navbar-brand" href="#"></a>
+        <form id='search' class="navbar-form navbar-left" role="search">
+          <div id="searchField" class="form-group">
+              <img src='./x.svg' id="clear" />
+              <input type='text' class='form-control' id="tags" placeholder="Search for a building...">
+          </div>
+        </form>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a id="download" class="options" href="#">Download</a></li>
+          <li><a id="feedback" class="options" href="https://docs.google.com/forms/d/136C6vVdbssm2qbGNO1sb9cp_kdK1Ppx9lqQ_KOxyx9g/viewform" target="_blank">Feedback</a></li>
+          <!--<li class="dropdown options">
+            <a href="#" class="dropdown-toggle options" data-toggle="dropdown" role="button" aria-expanded="false">Options <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#gameday" class="not-active">Bus Routes</a></li>
+              <li><a href="#gameday" class="not-active">Parking</a></li>
+              <li><a href="#gameday" class="not-active">Gameday</a></li>
+              <li><a href="#biking" class="not-active">Biking</a></li>
+              <li><a href="#construction" class="not-active">Construction</a></li>
+            </ul>
+          </li>-->
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+<script>
+
+$.getJSON('./places.geojson', function(data) {
+
+  var availableTags = [],
+      buildings = {};
+
+  var list = data.features.sort(function(a,b) {
+    return parseInt(a.properties.number) - parseInt(b.properties.number);
+  }).map(function(d) {
+    availableTags.push(d.properties.name);
+    buildings[d.properties.name] = { id: d.properties.number, coordinates: d.geometry.coordinates };
+  });
+
+  var bounds = [
+      [-78.199, 40.591], // Southwest coordinates
+      [-77.544, 41.020]  // Northeast coordinates
+  ];
+
+  var center = [-77.86155,40.80174];
+  var zoom = 14.5;
+  var filter = ["==", "BLDG_NUM", ""];
+
+  if (location.hash !== '') {
+    hashBuildingID = location.hash.substring(1,location.hash.length)
+    for (name in buildings) {
+      if (parseInt(buildings[name]['id']) === parseInt(hashBuildingID)) {
+        buildingID = buildings[name].id;
+        while (buildingID.length < 7) {
+          buildingID = '0' + buildingID;
+        }
+        location.hash = buildingID;
+
+        var filter = ["==", "BLDG_NUM", buildingID];
+        $("#tags").val(name);
+
+        var coordinates = [buildings[name].coordinates[0], buildings[name].coordinates[1]];
+        center = coordinates;
+        zoom = 16.5;
+
+        showClear();
+        break;
+      }
+    }
+  }
+
+  mapboxgl.accessToken = 'pk.eyJ1IjoiZ291bGRjZW50ZXIiLCJhIjoiY2luMHAwM2VqMGFrcndibHVybzAzNHYzYSJ9.BfWfFP9IhCRCdjUsXDluBg';
+  var map = new mapboxgl.Map({
+      container: 'map', // container id
+      style: 'mapbox://styles/gouldcenter/cin684zct0026abku522pzz74', //stylesheet location
+      center: center,
+      zoom: zoom,
+      bearing: -44.5,
+      pitch: 0,
+      maxBounds: bounds,
+      maxZoom: 20,
+      preserveDrawingBuffer: true
+  });
+
+  //map.addControl(new mapboxgl.Geolocate({position: 'bottom-right'}));
+  map.addControl(new mapboxgl.Navigation({position: 'bottom-right'}));
+
+  // disable map rotation using touch rotation gesture
+  map.touchZoomRotate.disableRotation();
+
+  $("#download").on('click', function() {
+    var url = map.getCanvas().toDataURL();
+    window.open(url, '_blank');
+  });
+
+  $("#tags").autocomplete({
+    source: availableTags,
+    minLength: 2,
+    select: function(event, ui) {
+      zoomToLocation(ui.item.label);
+      showClear();
+    },
+    open: function(event, ui) {
+      var query = $("#tags").val();
+      if (buildings[query]) {
+        zoomToLocation(query);
+        showClear();
+      }
+    }
+  });
+
+  $('#tags').on('change', function() {
+    console.log('uh...');
+  })
+
+  function zoomToLocation(query) {
+    buildingID = buildings[query].id;
+    while (buildingID.length < 7) {
+      buildingID = '0' + buildingID;
+    }
+    location.hash = buildingID;
+
+    var filter = ["==", "BLDG_NUM", buildingID];
+    map.setFilter('psu-buildings-highlight-fill', filter);
+    map.setFilter('psu-buildings-highlight-case', filter);
+    map.setFilter('psu-building-label-highlight', filter);
+
+    var coordinates = [buildings[query].coordinates[0], buildings[query].coordinates[1]];
+    map.flyTo({center: coordinates, zoom: 16.5});
+  }
+
+  map.on('load', function() {
+    map.setFilter('psu-buildings-highlight-fill', filter);
+    map.setFilter('psu-buildings-highlight-case', filter);
+    map.setFilter('psu-building-label-highlight', filter);
+  });
+
+  $('#clear').on('click', function() {
+    $('#tags').val('');
+    location.hash = '';
+    filter = ["==", "BLDG_NUM", ""];
+    map.setFilter('psu-buildings-highlight-fill', filter);
+    map.setFilter('psu-buildings-highlight-case', filter);
+    map.setFilter('psu-building-label-highlight', filter);
+    $('#clear').css('opacity', 0);
+    $('#clear').css('pointer-events', 'none');
+  });
+
+  function showClear() {
+    $('#clear').css('opacity', 0.5);
+    $('#clear').css('pointer-events', 'all');
+  }
+
+  $.event.special.tap = {
+    setup: function(data, namespaces) {
+        var $elem = $(this);
+        $elem.bind('touchstart', $.event.special.tap.handler)
+             .bind('touchmove', $.event.special.tap.handler)
+             .bind('touchend', $.event.special.tap.handler);
+    },
+
+    teardown: function(namespaces) {
+        var $elem = $(this);
+        $elem.unbind('touchstart', $.event.special.tap.handler)
+             .unbind('touchmove', $.event.special.tap.handler)
+             .unbind('touchend', $.event.special.tap.handler);
+    },
+
+    handler: function(event) {
+        event.preventDefault();
+        var $elem = $(this);
+        $elem.data(event.type, 1);
+        if (event.type === 'touchend' && !$elem.data('touchmove')) {
+            event.type = 'tap';
+            $.event.handle.apply(this, arguments);
+        } else if ($elem.data('touchend')) {
+            $elem.removeData('touchstart touchmove touchend');
+        }
+    }
+};
+
+});
+
+</script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-76583909-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
