@@ -1,7 +1,1 @@
-A Mapbox GL campus map.
-
-[map.psu.edu](http://www.map.psu.edu)
-
----
-
-<img src="psu.png" />
+Testing Changes for the campus map.  Original Code Credit to Aaron Dennis.
