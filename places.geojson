@@ -235,8 +235,11 @@
         ]
       },
       "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
         "name": "Agricultural Sciences and Industries Building",
-        "number": "11600"
+        "number": "0116000"
       }
     },
     {
@@ -3850,8 +3853,11 @@
         ]
       },
       "properties": {
-        "name": "IST",
-        "number": "39000"
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "name": "Westgate Building",
+        "number": 39000
       }
     },
     {
@@ -4592,8 +4598,11 @@
         ]
       },
       "properties": {
-        "name": "Materials Research Lab",
-        "number": "17000"
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "name": "Energy & Environment Laboratory",
+        "number": 17000
       }
     },
     {
@@ -5978,8 +5987,11 @@
         ]
       },
       "properties": {
-        "name": "E HHD",
-        "number": "653000"
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "name": "Nursing Sciences",
+        "number": 653000
       }
     },
     {
@@ -7742,8 +7754,11 @@
         ]
       },
       "properties": {
-        "name": "S Henderson Building",
-        "number": "652000"
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "name": "Health and Human Development",
+        "number": 652000
       }
     },
     {
@@ -9320,6 +9335,40 @@
         "coordinates": [
           -77.870734333992,
           40.81261152182666
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "name": "Research Unit A Modular Lab Facility",
+        "number": "0033001"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.85134196281433,
+          40.80559535636166
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "name": "HHD",
+        "number": 652000
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.86035418510437,
+          40.796202765489134
         ]
       }
     }
