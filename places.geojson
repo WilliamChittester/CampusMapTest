@@ -869,7 +869,7 @@
         "marker-size": "medium",
         "marker-symbol": "",
         "name": "Water Treatment Facility #2",
-        "number": 918001
+        "number": "0918001"
       }
     },
     {
@@ -9279,7 +9279,7 @@
         "marker-size": "medium",
         "marker-symbol": "",
         "name": "Robinson Hall",
-        "number": 214200
+        "number": "0214200"
       },
       "geometry": {
         "type": "Point",
@@ -9296,7 +9296,7 @@
         "marker-size": "medium",
         "marker-symbol": "",
         "name": "Earle Hall",
-        "number": 261000
+        "number": "0261000"
       },
       "geometry": {
         "type": "Point",
