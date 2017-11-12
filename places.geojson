@@ -4602,7 +4602,7 @@
         "marker-size": "medium",
         "marker-symbol": "",
         "name": "Energy & Environment Laboratory",
-        "number": 17000
+        "number": "017000"
       }
     },
     {
@@ -5991,7 +5991,7 @@
         "marker-size": "medium",
         "marker-symbol": "",
         "name": "Nursing Sciences",
-        "number": 653000
+        "number": "0653000"
       }
     },
     {
@@ -7758,7 +7758,7 @@
         "marker-size": "medium",
         "marker-symbol": "",
         "name": "Health and Human Development",
-        "number": 652000
+        "number": "0652000"
       }
     },
     {
@@ -9362,13 +9362,30 @@
         "marker-size": "medium",
         "marker-symbol": "",
         "name": "HHD",
-        "number": 652000
+        "number": "0652000"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
           -77.86035418510437,
           40.796202765489134
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "name": "Berkey Creamery",
+        "number": "0107001"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.8624302148819,
+          40.80369501721623
         ]
       }
     }
