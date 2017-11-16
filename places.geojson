@@ -3153,8 +3153,11 @@
         ]
       },
       "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
         "name": "Bookstore Building",
-        "number": "21000"
+        "number": 21000
       }
     },
     {
@@ -9290,8 +9293,8 @@
     {
       "type": "Feature",
       "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
+        "marker-color": "",
+        "marker-size": "",
         "marker-symbol": "",
         "name": "Robinson Hall",
         "number": "0214200"
@@ -9307,8 +9310,8 @@
     {
       "type": "Feature",
       "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
+        "marker-color": "",
+        "marker-size": "",
         "marker-symbol": "",
         "name": "Earle Hall",
         "number": "0261000"
@@ -9324,8 +9327,8 @@
     {
       "type": "Feature",
       "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
+        "marker-color": "",
+        "marker-size": "",
         "marker-symbol": "",
         "name": "Data Center",
         "number": "043000"
@@ -9341,8 +9344,8 @@
     {
       "type": "Feature",
       "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
+        "marker-color": "",
+        "marker-size": "",
         "marker-symbol": "",
         "name": "Research Unit A Modular Lab Facility",
         "number": "0033001"
@@ -9358,8 +9361,8 @@
     {
       "type": "Feature",
       "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
+        "marker-color": "",
+        "marker-size": "",
         "marker-symbol": "",
         "name": "HHD",
         "number": "0652000"
@@ -9375,8 +9378,8 @@
     {
       "type": "Feature",
       "properties": {
-        "marker-color": "#7e7e7e",
-        "marker-size": "medium",
+        "marker-color": "",
+        "marker-size": "",
         "marker-symbol": "",
         "name": "Berkey Creamery",
         "number": "0107001"
@@ -9386,6 +9389,151 @@
         "coordinates": [
           -77.8624302148819,
           40.80369501721623
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "name": "Biobehavioral Health Building",
+        "number": "0654000"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.86079943180084,
+          40.79672461096161
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "name": "East Halls"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.86179721355438,
+          40.80637496693663
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "name": "North Halls"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.86663591861725,
+          40.8021763310039
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "name": "West Halls"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.86669492721558,
+          40.796271803647
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "name": "White Course Apartments"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.87294447422028,
+          40.78947729256943
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "name": "Pollock Halls"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.85731256008148,
+          40.80101495927656
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "name": "South Halls"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.85588562488556,
+          40.799484029133275
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "name": "Eastview Terrace"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.85376131534576,
+          40.80151037207914
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "name": "Nittany Apartments"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.85704970359802,
+          40.80352853192099
         ]
       }
     }
