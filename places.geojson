@@ -2868,20 +2868,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -77.865153,
-          40.793208
-        ]
-      },
-      "properties": {
-        "name": "Bag House",
-        "number": "911000"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -77.860427,
           40.803105
         ]
@@ -3606,20 +3592,6 @@
       "properties": {
         "name": "Chem Stor II",
         "number": "432000"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -77.86538,
-          40.793188
-        ]
-      },
-      "properties": {
-        "name": "Chimney",
-        "number": "911000"
       }
     },
     {
@@ -7853,20 +7825,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -77.865468,
-          40.79313
-        ]
-      },
-      "properties": {
-        "name": "Scale House",
-        "number": "911000"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -77.871007,
           40.805727
         ]
@@ -8735,20 +8693,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -77.865261,
-          40.793077
-        ]
-      },
-      "properties": {
-        "name": "Turbine Building",
-        "number": "911000"
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -77.853245,
           40.820537
         ]
@@ -9415,13 +9359,14 @@
         "marker-color": "#7e7e7e",
         "marker-size": "medium",
         "marker-symbol": "",
-        "name": "Eastview Terrace"
+        "name": "Schreyer Honors College",
+        "number": "0233000"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -77.85376131534576,
-          40.80151037207914
+          -77.8584,
+          40.7978
         ]
       }
     }
